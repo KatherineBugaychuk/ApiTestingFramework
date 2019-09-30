@@ -1,0 +1,2 @@
+﻿GET request sample: https://api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=9acb0f4df01ac2645b18fabf8ac4bdc6
+API documentation: https://openweathermap.org/current

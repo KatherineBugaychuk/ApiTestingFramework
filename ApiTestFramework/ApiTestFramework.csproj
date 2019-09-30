@@ -1,0 +1,150 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\NUnit3TestAdapter.3.13.0\build\net35\NUnit3TestAdapter.props" Condition="Exists('..\packages\NUnit3TestAdapter.3.13.0\build\net35\NUnit3TestAdapter.props')" />
+  <Import Project="..\packages\NUnit.3.12.0\build\NUnit.props" Condition="Exists('..\packages\NUnit.3.12.0\build\NUnit.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{0148C3E0-129C-48AB-A8B2-EF97D1691B68}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>ApiTestFramework</RootNamespace>
+    <AssemblyName>ApiTestFramework</AssemblyName>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework, Version=3.12.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\NUnit.3.12.0\lib\net45\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="RestSharp, Version=106.6.10.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL">
+      <HintPath>..\packages\RestSharp.106.6.10\lib\net452\RestSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Endpoints\Attributes\Bug.cs" />
+    <Compile Include="Endpoints\Attributes\CommaSeparatedValues.cs" />
+    <Compile Include="Endpoints\Endpoint.cs" />
+    <Compile Include="Endpoints\EndpointTypes\NonExistingEndpoint.cs" />
+    <Compile Include="Endpoints\EndpointTypes\GroupEndpoint.cs" />
+    <Compile Include="Endpoints\EndpointTypes\FindEndpoint.cs" />
+    <Compile Include="Endpoints\EndpointTypes\WeatherEndpoint.cs" />
+    <Compile Include="Endpoints\Requests\GetRequest.cs" />
+    <Compile Include="Endpoints\Requests\Get\Weather\ByCityCountryRequest.cs" />
+    <Compile Include="Endpoints\Requests\Get\Weather\ByCityIdRequest.cs" />
+    <Compile Include="Endpoints\Requests\Get\Weather\ByCoordinatesRequest.cs" />
+    <Compile Include="Endpoints\Requests\Get\Weather\BySeveralCityIdsRequest.cs" />
+    <Compile Include="Endpoints\Requests\Get\Weather\ByZipCodeRequest.cs" />
+    <Compile Include="Endpoints\Requests\PostRequest.cs" />
+    <Compile Include="Endpoints\Requests\Request.cs" />
+    <Compile Include="Endpoints\Responses\CommonResponse.cs" />
+    <Compile Include="Endpoints\Responses\CommonResponseClasses\Clouds.cs" />
+    <Compile Include="Endpoints\Responses\CommonResponseClasses\Coord.cs" />
+    <Compile Include="Endpoints\Responses\CommonResponseClasses\Main.cs" />
+    <Compile Include="Endpoints\Responses\CommonResponseClasses\Rain.cs" />
+    <Compile Include="Endpoints\Responses\CommonResponseClasses\Sys.cs" />
+    <Compile Include="Endpoints\Responses\CommonResponseClasses\Weather.cs" />
+    <Compile Include="Endpoints\Responses\CommonResponseClasses\Wind.cs" />
+    <Compile Include="Endpoints\Responses\Response.cs" />
+    <Compile Include="Endpoints\Url.cs" />
+    <Compile Include="Execution\GetRequestSender.cs" />
+    <Compile Include="Execution\PostRequestSender.cs" />
+    <Compile Include="Execution\RequestExecutor.cs" />
+    <Compile Include="Execution\RequestSender.cs" />
+    <Compile Include="Execution\ResponseProcessor.cs" />
+    <Compile Include="Execution\ISenderCommand.cs" />
+    <Compile Include="Tests\EndpointsContainer.cs" />
+    <Compile Include="Validation\Validator.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tests\UtilitiesTests\CollectionsUtilitiesTests.cs" />
+    <Compile Include="Tests\CommonForTests.cs" />
+    <Compile Include="Tests\WeatherTestsNegative.cs" />
+    <Compile Include="Tests\WeatherTestsPositive.cs" />
+    <Compile Include="Utilities\CollectionsUtilities.cs" />
+    <Compile Include="Utilities\ObjectConverter.cs" />
+    <Compile Include="Validation\Comparator.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.6.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.6.2 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\notes.txt" />
+    <Content Include="Resources\todo.txt" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\NUnit.3.12.0\build\NUnit.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\NUnit.3.12.0\build\NUnit.props'))" />
+    <Error Condition="!Exists('..\packages\NUnit3TestAdapter.3.13.0\build\net35\NUnit3TestAdapter.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\NUnit3TestAdapter.3.13.0\build\net35\NUnit3TestAdapter.props'))" />
+  </Target>
+</Project>
