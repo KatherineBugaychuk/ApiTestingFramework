@@ -108,7 +108,9 @@
     <Compile Include="Execution\ResponseProcessor.cs" />
     <Compile Include="Execution\ISenderCommand.cs" />
     <Compile Include="Tests\EndpointsContainer.cs" />
-    <Compile Include="Validation\Validator.cs" />
+    <Compile Include="Utilities\CommonValues.cs" />
+    <Compile Include="Utilities\Validation\ConsoleWriteUtilities.cs" />
+    <Compile Include="Utilities\Validation\Validator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tests\UtilitiesTests\CollectionsUtilitiesTests.cs" />
     <Compile Include="Tests\CommonForTests.cs" />
@@ -116,7 +118,7 @@
     <Compile Include="Tests\WeatherTestsPositive.cs" />
     <Compile Include="Utilities\CollectionsUtilities.cs" />
     <Compile Include="Utilities\ObjectConverter.cs" />
-    <Compile Include="Validation\Comparator.cs" />
+    <Compile Include="Utilities\Validation\Comparator.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

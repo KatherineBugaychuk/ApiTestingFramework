@@ -5,7 +5,7 @@
         public double? speed { get; set; }
         public int? deg { get; set; }
 
-        public override string ToString()
+        public string GetString()
         {
             return "{" +
                     "\"speed\":" + speed +

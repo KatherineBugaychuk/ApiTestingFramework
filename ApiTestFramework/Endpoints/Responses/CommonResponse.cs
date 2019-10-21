@@ -1,5 +1,4 @@
 ﻿using ApiTestFramework.Endpoints.Responses.CommonResponseClasses;
-
 namespace ApiTestFramework.Endpoints.Responses
 {
     class CommonResponse
@@ -132,7 +131,7 @@ namespace ApiTestFramework.Endpoints.Responses
             return this;
         }
 
-        public override string ToString()
+        public string GetString()
         {
             return "{" +
                     "\"coord\":" + coord +

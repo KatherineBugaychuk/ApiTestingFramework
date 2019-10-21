@@ -1,4 +1,6 @@
-﻿using NUnit.Framework;
+﻿using ApiTestFramework.Endpoints.Responses.CommonResponseClasses;
+using ApiTestFramework.Utilities;
+using NUnit.Framework;
 using System;
 using System.Reflection;
 
@@ -12,13 +14,11 @@ namespace ApiTestFramework.Validation
 
     class Comparator
     {
-        public static readonly BindingFlags PropertiesInCurrentClass = BindingFlags.Public | BindingFlags.Instance | BindingFlags.DeclaredOnly;
-
         public static void CompareObjects(object actual, object expected, CompareType compareType = CompareType.ContainsAll)
         {
             Console.WriteLine("***Compare***\nExpected:\n" + expected + "\nActual:\n" + actual);
-            var expectedFields = expected.GetType().GetProperties(PropertiesInCurrentClass);        
-            var actualFields = actual.GetType().GetProperties(PropertiesInCurrentClass);
+            var expectedFields = expected.GetType().GetProperties(CommonValues.PropertiesInCurrentClass);        
+            var actualFields = actual.GetType().GetProperties(CommonValues.PropertiesInCurrentClass);
             foreach (var expectedField in expectedFields)
             {
                 foreach (var actualField in actualFields)
@@ -81,8 +81,8 @@ namespace ApiTestFramework.Validation
             }
             else
             {
-                var expectedFields = expectedValue.GetType().GetProperties(PropertiesInCurrentClass);
-                var actualFields = actualValue.GetType().GetProperties(PropertiesInCurrentClass);
+                var expectedFields = expectedValue.GetType().GetProperties(CommonValues.PropertiesInCurrentClass);
+                var actualFields = actualValue.GetType().GetProperties(CommonValues.PropertiesInCurrentClass);
                 foreach (var expectedField in expectedFields) {
                     foreach (var actualField in actualFields) {
                         if (expectedField.Name.Equals(actualField.Name)) {

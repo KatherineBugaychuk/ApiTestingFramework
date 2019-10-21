@@ -18,7 +18,7 @@
             this.country = country;
         }
 
-        public override string ToString()
+        public string GetString()
         {
             return "{" +
                     "\"type\":" + type +

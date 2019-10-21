@@ -21,5 +21,11 @@ namespace ApiTestFramework.Endpoints.Responses
             ResponseCode = responseCode;
             ResponseBody = responseBody;
         }
+
+        public Response(Response response)
+        {
+            ResponseCode = response.ResponseCode;
+            ResponseBody = response.ResponseBody;
+        }
     }
 }

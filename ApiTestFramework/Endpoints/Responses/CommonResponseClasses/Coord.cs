@@ -5,7 +5,7 @@
         public double? lon { get; set; }
         public double? lat { get; set; }
 
-        public override string ToString()
+        public string GetString()
         {
             return "{" +
                     "\"lon\":" + lon +

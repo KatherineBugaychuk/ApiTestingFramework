@@ -1,5 +1,4 @@
-﻿using ApiTestFramework.Validation;
-using System;
+﻿using System;
 using System.Collections.Generic;
 
 namespace ApiTestFramework.Utilities
@@ -9,7 +8,7 @@ namespace ApiTestFramework.Utilities
         public static Dictionary<string, string> ConvertObjectToDictionary(object objectToConvert)
         {
             var fieldsMap = new Dictionary<string, string>();
-            var fields = objectToConvert.GetType().GetProperties(Comparator.PropertiesInCurrentClass);
+            var fields = objectToConvert.GetType().GetProperties(CommonValues.PropertiesInCurrentClass);
             foreach (var field in fields)
             {
                 string fieldValue;

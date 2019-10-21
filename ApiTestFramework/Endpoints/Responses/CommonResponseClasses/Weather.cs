@@ -7,7 +7,7 @@
         public string description { get; set; }
         public string icon { get; set; }
 
-        public override string ToString()
+        public string GetString()
         {
             return "{" +
                     "\"id\":" + id +

@@ -4,7 +4,7 @@
     {
         public int? all { get; set; }
 
-        public override string ToString()
+        public string GetString()
         {
             return "{" +
                     "\"all\":" + all +

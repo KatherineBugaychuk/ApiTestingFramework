@@ -7,7 +7,7 @@ namespace ApiTestFramework.Endpoints.Responses.CommonResponseClasses
         [JsonProperty(PropertyName = "3h")]
         public double? threeh { get; set; }
 
-        public override string ToString()
+        public string GetString()
         {
             return "{" +
                     "\"3h\":" + threeh +

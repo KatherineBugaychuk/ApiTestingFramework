@@ -10,6 +10,7 @@ namespace ApiTestFramework.Endpoints
     {
         RequestExecutor requestExecutor;
         Dictionary<string, string> headers;
+        public List<Response> AllResponses => requestExecutor.Responses;
         public string EndpointName { get; protected set; }
         List<ISenderCommand> commands;
 
@@ -55,23 +56,12 @@ namespace ApiTestFramework.Endpoints
             return this;
         }
 
-        public List<Response> GetAllResponses()
-        {
-            return requestExecutor.Responses;
-        }
-
-        // todo: refactor
         public List<Response> GetResponses(params int[] indexesOfResponses)
-        {
-            List<Response> responses = new List<Response>();
-            indexesOfResponses.OfType<int>().ToList().ForEach(index => responses.Add(requestExecutor.Responses[index]));
-            return responses;
-        }
+            => indexesOfResponses.Select(index => new Response(requestExecutor.Responses[index])).ToList();      
 
         public Response GetResponse(int indexOfResponse)
-        {
-            return requestExecutor.Responses[indexOfResponse];
-        }
+            => requestExecutor.Responses[indexOfResponse];
+        
 
         public Endpoint Execute()
         {

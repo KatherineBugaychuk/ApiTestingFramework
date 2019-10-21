@@ -1,5 +1,6 @@
 ﻿using ApiTestFramework.Endpoints.Attributes;
 using ApiTestFramework.Endpoints.Requests;
+using ApiTestFramework.Utilities;
 using ApiTestFramework.Validation;
 using NUnit.Framework;
 using System.Linq;
@@ -17,16 +18,15 @@ namespace ApiTestFramework.Execution
         public static void ValidateCommaSeparatedValues(object obj)
         {
             obj = obj as Request;
-            foreach (var field in obj.GetType().GetProperties(Comparator.PropertiesInCurrentClass))
+            foreach (var field in obj.GetType().GetProperties(CommonValues.PropertiesInCurrentClass))
             {
-                var commaSeparatedAttribute = field.GetCustomAttributes(typeof(CommaSeparatedValues), true).FirstOrDefault() as CommaSeparatedValues;
-                if (commaSeparatedAttribute != null) 
+                if (field.GetCustomAttributes(typeof(CommaSeparatedValues), true).FirstOrDefault() is CommaSeparatedValues commaSeparatedAttribute)
                 {
                     var min = commaSeparatedAttribute.CountMin;
                     var max = commaSeparatedAttribute.CountMax;
                     var values = (string)field.GetValue(obj);
                     var countOfValues = values.Split(',').Length;
-                    Assert.IsTrue(countOfValues >= min || countOfValues <= max, 
+                    Assert.IsTrue(countOfValues >= min || countOfValues <= max,
                         $"Wrong number of comma separated values: {countOfValues}\nShould be greater than {min} and less than {max}");
                 }
             }

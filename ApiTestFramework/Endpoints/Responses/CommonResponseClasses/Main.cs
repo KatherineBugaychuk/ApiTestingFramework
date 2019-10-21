@@ -8,7 +8,7 @@
         public double? temp_min { get; set; }
         public double? temp_max { get; set; }
 
-        public override string ToString()
+        public string GetString()
         {
             return "{" +
                     "\"temp\":" + temp +
