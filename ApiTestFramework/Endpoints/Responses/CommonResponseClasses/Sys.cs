@@ -17,17 +17,5 @@
         {
             this.country = country;
         }
-
-        public string GetString()
-        {
-            return "{" +
-                    "\"type\":" + type +
-                    ",\"id\":" + id +
-                    ",\"message\":" + message +
-                    ",\"country\":" + country +
-                    ",\"sunrise\":" + sunrise +
-                    ",\"sunset\":" + sunset +
-                    "}";
-        }
     }
 }

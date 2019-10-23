@@ -1,8 +1,6 @@
-﻿using ApiTestFramework.Endpoints.Responses.CommonResponseClasses;
-using ApiTestFramework.Utilities;
+﻿using ApiTestFramework.Utilities;
 using NUnit.Framework;
 using System;
-using System.Reflection;
 
 namespace ApiTestFramework.Validation
 {
@@ -16,7 +14,7 @@ namespace ApiTestFramework.Validation
     {
         public static void CompareObjects(object actual, object expected, CompareType compareType = CompareType.ContainsAll)
         {
-            Console.WriteLine("***Compare***\nExpected:\n" + expected + "\nActual:\n" + actual);
+            Console.WriteLine("***Compare***\nExpected:\n" + expected.PropertiesToString() + "\nActual:\n" + actual.PropertiesToString());
             var expectedFields = expected.GetType().GetProperties(CommonValues.PropertiesInCurrentClass);        
             var actualFields = actual.GetType().GetProperties(CommonValues.PropertiesInCurrentClass);
             foreach (var expectedField in expectedFields)

@@ -7,16 +7,5 @@
         public int? pressure { get; set; }
         public double? temp_min { get; set; }
         public double? temp_max { get; set; }
-
-        public string GetString()
-        {
-            return "{" +
-                    "\"temp\":" + temp +
-                    ",\"humidity\":" + humidity +
-                    ",\"pressure\":" + pressure +
-                    ",\"temp_min\":" + temp_min +
-                    ",\"temp_max\":" + temp_max +
-                    "}";
-        }
     }
 }

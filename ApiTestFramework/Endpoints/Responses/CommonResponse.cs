@@ -130,26 +130,5 @@ namespace ApiTestFramework.Endpoints.Responses
             this.timezone = timezone;
             return this;
         }
-
-        public string GetString()
-        {
-            return "{" +
-                    "\"coord\":" + coord +
-                    ",\"sys\":" + sys +
-                    ",\"weather\":" + weather +
-                    ",\"base\":" + @base +
-                    ",\"main\":" + main +
-                    ",\"wind\":" + wind +
-                    ",\"rain\":" + rain +
-                    ",\"clouds\":" + clouds +
-                    ",\"dt\":" + dt +
-                    ",\"id\":" + id +
-                    ",\"name\":" + name +
-                    ",\"cod\":" + cod +
-                    ",\"message\":" + message +
-                    ",\"visibility\":" + visibility +
-                    ",\"timezone\":" + timezone +
-                    "}";
-        }
     }
 }

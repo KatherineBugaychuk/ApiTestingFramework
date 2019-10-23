@@ -109,7 +109,7 @@
     <Compile Include="Execution\ISenderCommand.cs" />
     <Compile Include="Tests\EndpointsContainer.cs" />
     <Compile Include="Utilities\CommonValues.cs" />
-    <Compile Include="Utilities\Validation\ConsoleWriteUtilities.cs" />
+    <Compile Include="Utilities\PropertyUtilities.cs" />
     <Compile Include="Utilities\Validation\Validator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tests\UtilitiesTests\CollectionsUtilitiesTests.cs" />
