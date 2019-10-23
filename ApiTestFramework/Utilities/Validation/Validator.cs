@@ -11,9 +11,7 @@ namespace ApiTestFramework.Execution
     class Validator
     {
         public static void ValidateRequest(object obj)
-        {
-            ValidateCommaSeparatedValues(obj);
-        }
+            => ValidateCommaSeparatedValues(obj);
 
         public static void ValidateCommaSeparatedValues(object obj)
         {
@@ -32,4 +30,5 @@ namespace ApiTestFramework.Execution
             }
         }
     }
+
 }

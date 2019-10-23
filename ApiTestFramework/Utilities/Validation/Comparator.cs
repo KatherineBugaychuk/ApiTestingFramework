@@ -39,10 +39,8 @@ namespace ApiTestFramework.Validation
         }
 
         static bool AreAllFieldsToBeCompared(CompareType compareType)
-        {
-            return compareType.Equals(CompareType.ContainsAll) || compareType.Equals(CompareType.EqualsAll);
-        }
-
+            => compareType.Equals(CompareType.ContainsAll) || compareType.Equals(CompareType.EqualsAll);
+        
         static bool CompareFieldValues(object actualValue, object expectedValue)
         {         
             if (expectedValue == null)
