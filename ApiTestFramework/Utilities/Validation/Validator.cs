@@ -1,10 +1,8 @@
 ﻿using ApiTestFramework.Endpoints.Attributes;
 using ApiTestFramework.Endpoints.Requests;
 using ApiTestFramework.Utilities;
-using ApiTestFramework.Validation;
 using NUnit.Framework;
 using System.Linq;
-using System.Reflection;
 
 namespace ApiTestFramework.Execution
 {
@@ -12,6 +10,9 @@ namespace ApiTestFramework.Execution
     {
         public static void ValidateRequest(object obj)
             => ValidateCommaSeparatedValues(obj);
+
+        public static void ValidateResponse(object obj)
+            => ValidateMandatory(obj);
 
         public static void ValidateCommaSeparatedValues(object obj)
         {
@@ -25,7 +26,24 @@ namespace ApiTestFramework.Execution
                     var values = (string)field.GetValue(obj);
                     var countOfValues = values.Split(',').Length;
                     Assert.IsTrue(countOfValues >= min || countOfValues <= max,
-                        $"Wrong number of comma separated values: {countOfValues}\nShould be greater than {min} and less than {max}");
+                        $"Wrong number of comma separated values of property '{field.Name}': {countOfValues}. Value should be greater than {min} and less than {max}");
+                }
+            }
+        }
+
+        public static void ValidateMandatory(object obj)
+        {
+            foreach (var field in obj.GetType().GetProperties(CommonValues.PropertiesInCurrentClass))
+            {            
+                bool isMandatory = field.GetCustomAttributes(typeof(Mandatory), true).Length > 0;
+                var propertyValue = field.GetValue(obj);
+                if (isMandatory && (PropertyUtilities.IsPrimitive(propertyValue) || propertyValue == null))
+                {
+                    Assert.IsTrue(propertyValue != null, $"Mandatory value of property '{field.Name}' is null");
+                }
+                if (!PropertyUtilities.IsPrimitive(propertyValue) && propertyValue != null)
+                {
+                    ValidateMandatory(propertyValue);
                 }
             }
         }

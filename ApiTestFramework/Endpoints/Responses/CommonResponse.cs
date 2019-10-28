@@ -1,8 +1,10 @@
-﻿using ApiTestFramework.Endpoints.Responses.CommonResponseClasses;
+﻿using ApiTestFramework.Endpoints.Attributes;
+using ApiTestFramework.Endpoints.Responses.CommonResponseClasses;
 namespace ApiTestFramework.Endpoints.Responses
 {
     class CommonResponse
     {
+        [Mandatory]
         public Coord coord { get; set; } = null;
         public Sys sys { get; set; } = null;
         public Weather[] weather { get; set; } = null;
