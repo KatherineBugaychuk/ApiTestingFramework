@@ -17,7 +17,7 @@ namespace ApiTestFramework.Execution
         public static void ValidateCommaSeparatedValues(object obj)
         {
             obj = obj as Request;
-            foreach (var field in obj.GetType().GetProperties(CommonValues.PropertiesInCurrentClass))
+            foreach (var field in obj.GetType().GetProperties(PropertyUtilities.PropertiesInCurrentClass))
             {
                 if (field.GetCustomAttributes(typeof(CommaSeparatedValues), true).FirstOrDefault() is CommaSeparatedValues commaSeparatedAttribute)
                 {
@@ -33,7 +33,7 @@ namespace ApiTestFramework.Execution
 
         public static void ValidateMandatory(object obj)
         {
-            foreach (var field in obj.GetType().GetProperties(CommonValues.PropertiesInCurrentClass))
+            foreach (var field in obj.GetType().GetProperties(PropertyUtilities.PropertiesInCurrentClass))
             {            
                 bool isMandatory = field.GetCustomAttributes(typeof(Mandatory), true).Length > 0;
                 var propertyValue = field.GetValue(obj);

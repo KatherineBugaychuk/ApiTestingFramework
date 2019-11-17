@@ -35,7 +35,9 @@ namespace ApiTestFramework.Endpoints
             FullUrl = fullUrl;
         }
 
-        static void SetBaseUrl() => BaseUrl = CombineUrlParts(ConfigurationManager.AppSettings["Url"], ConfigurationManager.AppSettings["Version"]);
+        static void SetBaseUrl() 
+            => BaseUrl = CombineUrlParts(ConfigurationManager.AppSettings["Url"], ConfigurationManager.AppSettings["Version"]);
+
         static void SetBaseUrlWithEndpoint(string endpointUrl)
         {
             SetBaseUrl();
@@ -44,10 +46,13 @@ namespace ApiTestFramework.Endpoints
 
         private static string CombineUrlParts(params string[] urlParts) => string.Join("/", urlParts);
 
-        static void SetAppIdUrlParameter() => AppIdUrlParameter = ConfigurationManager.AppSettings["AppId"];
+        static void SetAppIdUrlParameter() 
+            => AppIdUrlParameter = ConfigurationManager.AppSettings["AppId"];
 
-        public void SetParametersFromClass(Request request) => parameters = ObjectConverter.ConvertObjectToDictionary(request);
+        public Dictionary<string, string> SetParametersFromClass(Request request) 
+            => parameters = ObjectConverter.ConvertObjectToDictionary(request);
 
-        private string GetConstructedFullUrl() => $"{BaseUrl}?{string.Join("", parameters?.Select(parameter => $"{parameter.Key}={parameter.Value}&").ToArray())}APPID={AppIdUrlParameter}";
+        private string GetConstructedFullUrl() 
+            => $"{BaseUrl}?{string.Join("", parameters?.Select(parameter => $"{parameter.Key}={parameter.Value}&").ToArray())}APPID={AppIdUrlParameter}";
     }
 }

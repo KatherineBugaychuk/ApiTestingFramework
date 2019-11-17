@@ -79,6 +79,7 @@
     <Compile Include="Endpoints\Attributes\Bug.cs" />
     <Compile Include="Endpoints\Attributes\CommaSeparatedValues.cs" />
     <Compile Include="Endpoints\Attributes\Mandatory.cs" />
+    <Compile Include="Endpoints\Attributes\WeatherUnitsProperty.cs" />
     <Compile Include="Endpoints\Endpoint.cs" />
     <Compile Include="Endpoints\EndpointTypes\NonExistingEndpoint.cs" />
     <Compile Include="Endpoints\EndpointTypes\GroupEndpoint.cs" />
@@ -90,6 +91,7 @@
     <Compile Include="Endpoints\Requests\Get\Weather\ByCoordinatesRequest.cs" />
     <Compile Include="Endpoints\Requests\Get\Weather\BySeveralCityIdsRequest.cs" />
     <Compile Include="Endpoints\Requests\Get\Weather\ByZipCodeRequest.cs" />
+    <Compile Include="Endpoints\Requests\Get\Weather\WeatherUnits.cs" />
     <Compile Include="Endpoints\Requests\PostRequest.cs" />
     <Compile Include="Endpoints\Requests\Request.cs" />
     <Compile Include="Endpoints\Responses\CommonResponse.cs" />
@@ -109,7 +111,6 @@
     <Compile Include="Execution\ResponseProcessor.cs" />
     <Compile Include="Execution\ISenderCommand.cs" />
     <Compile Include="Tests\EndpointsContainer.cs" />
-    <Compile Include="Utilities\CommonValues.cs" />
     <Compile Include="Utilities\PropertyUtilities.cs" />
     <Compile Include="Utilities\Validation\Validator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -141,7 +142,10 @@
     <Content Include="Resources\notes.txt" />
     <Content Include="Resources\todo.txt" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Resources\StubsData\Temperature\" />
+    <Folder Include="Resources\Validation\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

@@ -7,8 +7,8 @@ namespace ApiTestFramework.Utilities
     {
         public static Dictionary<string, string> ConvertObjectToDictionary(object objectToConvert)
         {
-            var fieldsMap = new Dictionary<string, string>();
-            var fields = objectToConvert.GetType().GetProperties(CommonValues.PropertiesInCurrentClass);
+            var propetriesDictionary = new Dictionary<string, string>();
+            var fields = objectToConvert.GetType().GetProperties(PropertyUtilities.PropertiesInCurrentClass);
             foreach (var field in fields)
             {
                 string fieldValue;
@@ -20,9 +20,9 @@ namespace ApiTestFramework.Utilities
                 {
                     fieldValue = "";
                 }
-                fieldsMap.Add(field.Name, fieldValue);
+                propetriesDictionary.Add(field.Name, fieldValue);
             }
-            return fieldsMap;
+            return propetriesDictionary;
         }
     }
 }

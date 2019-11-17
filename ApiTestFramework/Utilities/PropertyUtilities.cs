@@ -5,9 +5,11 @@ namespace ApiTestFramework.Utilities
 {
     public static class PropertyUtilities
     {
+        public static readonly BindingFlags PropertiesInCurrentClass = BindingFlags.Public | BindingFlags.Instance | BindingFlags.DeclaredOnly;
+
         public static string PropertiesToString(this object obj)
         {
-            var properties = obj.GetType().GetProperties(CommonValues.PropertiesInCurrentClass);
+            var properties = obj.GetType().GetProperties(PropertiesInCurrentClass);
             return string.Join(", ", properties.ToList().Select(property => $"{property.Name}: {GetPropertyValue(property, obj)}").ToList());
         }
 

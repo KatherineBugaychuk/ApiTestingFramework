@@ -15,8 +15,8 @@ namespace ApiTestFramework.Validation
         public static void CompareObjects(object actual, object expected, CompareType compareType = CompareType.ContainsAll)
         {
             Console.WriteLine("***Compare***\nExpected:\n" + expected.PropertiesToString() + "\nActual:\n" + actual.PropertiesToString());
-            var expectedFields = expected.GetType().GetProperties(CommonValues.PropertiesInCurrentClass);        
-            var actualFields = actual.GetType().GetProperties(CommonValues.PropertiesInCurrentClass);
+            var expectedFields = expected.GetType().GetProperties(PropertyUtilities.PropertiesInCurrentClass);        
+            var actualFields = actual.GetType().GetProperties(PropertyUtilities.PropertiesInCurrentClass);
             foreach (var expectedField in expectedFields)
             {
                 foreach (var actualField in actualFields)
@@ -77,8 +77,8 @@ namespace ApiTestFramework.Validation
             }
             else
             {
-                var expectedFields = expectedValue.GetType().GetProperties(CommonValues.PropertiesInCurrentClass);
-                var actualFields = actualValue.GetType().GetProperties(CommonValues.PropertiesInCurrentClass);
+                var expectedFields = expectedValue.GetType().GetProperties(PropertyUtilities.PropertiesInCurrentClass);
+                var actualFields = actualValue.GetType().GetProperties(PropertyUtilities.PropertiesInCurrentClass);
                 foreach (var expectedField in expectedFields) {
                     foreach (var actualField in actualFields) {
                         if (expectedField.Name.Equals(actualField.Name)) {

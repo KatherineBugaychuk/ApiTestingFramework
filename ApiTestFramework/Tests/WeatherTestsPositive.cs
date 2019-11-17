@@ -1,8 +1,5 @@
 ﻿using ApiTestFramework.Endpoints.Requests.Get.Weather;
 using ApiTestFramework.Endpoints.Responses;
-using ApiTestFramework.Validation;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
 using NUnit.Framework;
 
 namespace ApiTestFramework.Tests
