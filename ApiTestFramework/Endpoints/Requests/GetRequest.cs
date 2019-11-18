@@ -12,7 +12,7 @@ namespace ApiTestFramework.Endpoints.Requests
         public override void PrepareRequest(Endpoint endpoint, Dictionary<string, string> headers, string url)
         {
             base.PrepareRequest(endpoint, headers, url);
-            RequestUrl.SetParametersFromClass(this);
+            RequestUrl.SetUrlParameters(this);
             RestRequest = new RestRequest(RequestUrl.FullUrl, Method.GET);
         }
     }

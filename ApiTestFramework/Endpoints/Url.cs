@@ -8,6 +8,10 @@ namespace ApiTestFramework.Endpoints
 {
     class Url
     {
+        const string AppIdSetting = "AppId";
+        const string UrlSetting = "Url";
+        const string VersionSetting = "Version";
+
         string fullUrl;
         public string FullUrl
         {
@@ -21,13 +25,12 @@ namespace ApiTestFramework.Endpoints
             }
         }
         public static string BaseUrl { get; set; }
-        static string AppIdUrlParameter { get; set; }
-        Dictionary<string, string> parameters;
+
+        Dictionary<string, string> parameters = new Dictionary<string, string>();
 
         public Url(Endpoint endpoint)
         {
             SetBaseUrlWithEndpoint(endpoint.EndpointName);
-            SetAppIdUrlParameter();
         }
 
         public Url(string fullUrl)
@@ -36,7 +39,7 @@ namespace ApiTestFramework.Endpoints
         }
 
         static void SetBaseUrl() 
-            => BaseUrl = CombineUrlParts(ConfigurationManager.AppSettings["Url"], ConfigurationManager.AppSettings["Version"]);
+            => BaseUrl = CombineUrlParts(ConfigurationManager.AppSettings[UrlSetting], ConfigurationManager.AppSettings[VersionSetting]);
 
         static void SetBaseUrlWithEndpoint(string endpointUrl)
         {
@@ -44,15 +47,22 @@ namespace ApiTestFramework.Endpoints
             BaseUrl = CombineUrlParts(BaseUrl, endpointUrl);
         }
 
-        private static string CombineUrlParts(params string[] urlParts) => string.Join("/", urlParts);
+        static string CombineUrlParts(params string[] urlParts) 
+            => string.Join("/", urlParts);
 
-        static void SetAppIdUrlParameter() 
-            => AppIdUrlParameter = ConfigurationManager.AppSettings["AppId"];
+        void AddUrlIdParameter() 
+            => parameters.Add(AppIdSetting, ConfigurationManager.AppSettings[AppIdSetting]);
 
-        public Dictionary<string, string> SetParametersFromClass(Request request) 
-            => parameters = ObjectConverter.ConvertObjectToDictionary(request);
+        void AddUrlParametersFromRequest(Request request)
+            => parameters.AddRange(ObjectConverter.ConvertObjectToDictionary(request));
 
-        private string GetConstructedFullUrl() 
-            => $"{BaseUrl}?{string.Join("", parameters?.Select(parameter => $"{parameter.Key}={parameter.Value}&").ToArray())}APPID={AppIdUrlParameter}";
+        string GetConstructedFullUrl() 
+            => $"{BaseUrl}?{string.Join("", parameters?.Select(parameter => $"{parameter.Key}={parameter.Value}&").ToArray())}";
+
+        public void SetUrlParameters(Request request)
+        {
+            AddUrlParametersFromRequest(request);
+            AddUrlIdParameter();
+        }
     }
 }

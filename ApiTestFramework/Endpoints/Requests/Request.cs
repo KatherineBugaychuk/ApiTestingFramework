@@ -1,10 +1,12 @@
-﻿using RestSharp;
+﻿using ApiTestFramework.Endpoints.Attributes;
+using RestSharp;
 using System.Collections.Generic;
 
 namespace ApiTestFramework.Endpoints.Requests
 {
     public enum RequestType { Get, Post, Put, Delete };
 
+    [WeatherUnitsAttribute]
     class Request
     {
         public Url RequestUrl { get; set; }

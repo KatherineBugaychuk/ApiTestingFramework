@@ -79,7 +79,7 @@
     <Compile Include="Endpoints\Attributes\Bug.cs" />
     <Compile Include="Endpoints\Attributes\CommaSeparatedValues.cs" />
     <Compile Include="Endpoints\Attributes\Mandatory.cs" />
-    <Compile Include="Endpoints\Attributes\WeatherUnitsProperty.cs" />
+    <Compile Include="Endpoints\Attributes\WeatherUnitsAttribute.cs" />
     <Compile Include="Endpoints\Endpoint.cs" />
     <Compile Include="Endpoints\EndpointTypes\NonExistingEndpoint.cs" />
     <Compile Include="Endpoints\EndpointTypes\GroupEndpoint.cs" />

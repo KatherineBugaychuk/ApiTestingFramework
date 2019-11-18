@@ -11,7 +11,7 @@ namespace ApiTestFramework.Endpoints.Requests
     {
         public PostRequest(Url requestUrl, string endpointName)
         {
-            requestUrl.SetParametersFromClass(this);
+            requestUrl.SetUrlParameters(this);
             RestRequest = new RestRequest(RequestUrl.FullUrl, Method.POST);
         }
     }
