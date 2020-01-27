@@ -2,6 +2,7 @@
 
 namespace ApiTestingFramework.Endpoints.Requests.Get.Weather
 {
+    [WeatherUnits(units = WeatherUnits.imperial)]
     class ByCityCountryRequest : GetRequest
     {
         [CommaSeparatedValues(CountMin = 1, CountMax = 2)]

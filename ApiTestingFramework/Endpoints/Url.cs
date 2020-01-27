@@ -3,6 +3,7 @@ using ApiTestingFramework.Utilities;
 using System.Collections.Generic;
 using System.Linq;
 using System.Configuration;
+using ApiTestingFramework.Endpoints.Attributes;
 
 namespace ApiTestingFramework.Endpoints
 {
@@ -53,6 +54,15 @@ namespace ApiTestingFramework.Endpoints
         void AddUrlIdParameter() 
             => parameters.Add(AppIdSetting, ConfigurationManager.AppSettings[AppIdSetting]);
 
+        void AddUnitsParameter(Request request)
+        {
+            WeatherUnitsAttribute unitsAttribute = request.GetType().GetCustomAttributes(typeof(WeatherUnitsAttribute), true).FirstOrDefault() as WeatherUnitsAttribute;
+            if (unitsAttribute != null)
+            {
+                parameters.Add(nameof(unitsAttribute.units), unitsAttribute.units.ToString());
+            }
+        }
+
         void AddUrlParametersFromRequest(Request request)
             => parameters.AddRange(ObjectConverter.ConvertObjectToDictionary(request));
 
@@ -62,6 +72,7 @@ namespace ApiTestingFramework.Endpoints
         public void SetUrlParameters(Request request)
         {
             AddUrlParametersFromRequest(request);
+            AddUnitsParameter(request);
             AddUrlIdParameter();
         }
     }

@@ -6,6 +6,6 @@ namespace ApiTestingFramework.Endpoints.Attributes
     [AttributeUsage(AttributeTargets.Class)]
     class WeatherUnitsAttribute : Attribute
     {
-        public WeatherUnits Units { get; set; } = WeatherUnits.metric;
+        public WeatherUnits units;
     }
 }
